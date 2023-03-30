@@ -3,18 +3,18 @@ self.addEventListener('install', function(event) {
       caches.open('first-app')
         .then(function(cache) {
           cache.addAll([
-            '/',
-            '/index.html',
-            '/src/css/app.css',
-            '/src/js/app.js',
-            '/manifest.json',
-            '/src/images/icons/app-icon-144x144.png',
-            '/src/images/icons/app-icon-192x192.png',
-            '/src/images/icons/app-icon-256x256.png',
-            '/src/images/icons/app-icon-384x384.png',
-            '/src/images/icons/app-icon-48x48.png',
-            '/src/images/icons/app-icon-512x512.png',
-            '/src/images/icons/app-icon-96x96.png',
+            './',
+            './index.html',
+            './src/css/app.css',
+            './src/js/app.js',
+            './manifest.json',
+            './src/images/icons/app-icon-144x144.png',
+            './src/images/icons/app-icon-192x192.png',
+            './src/images/icons/app-icon-256x256.png',
+            './src/images/icons/app-icon-384x384.png',
+            './src/images/icons/app-icon-48x48.png',
+            './src/images/icons/app-icon-512x512.png',
+            './src/images/icons/app-icon-96x96.png',
           ])
         })
     );
