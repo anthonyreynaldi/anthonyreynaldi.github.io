@@ -8,8 +8,8 @@ self.addEventListener('install', function(event) {
             '/about.html',
             '/blog.html',
             '/contact.html',
-            '/porfolio-example01.html',
-            '/style.ccss',
+            '/portfolio-example01.html',
+            '/styles.css',
             '/script.js',
             '/manifest.json',
             '/icon/icon-192x192.png',
@@ -45,18 +45,50 @@ self.addEventListener('install', function(event) {
             '/images/portfolio-example-04.jpg',
             '/images/portfolio-example-05.jpg',
             '/images/portfolio-example-06.jpg',
+            'https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en',
+            'https://code.getmdl.io/1.3.0/material.grey-pink.min.css',
+            'https://fonts.googleapis.com/icon?family=Material+Icons',
+            'https://code.getmdl.io/1.3.0/material.min.js'
           ])
         })
+        .catch(error => {
+            console.error('Cache addAll error:', error);
+          })
     );
     return self.clients.claim();
   });
   
-self.addEventListener('fetch', function(event) {
-event.respondWith(
-    caches.match(event.request)
-    .then(function(res) {
-        return res;
-    })
-);
-});
-    
+// self.addEventListener('fetch', function(event) {
+// event.respondWith(
+//     caches.match(event.request)
+//     .then(function(res) {
+//         return res;
+//     })
+// );
+// });
+
+self.addEventListener('fetch', event => {
+    event.respondWith(
+      caches.match(event.request).then(response => {
+        if (response) {
+          // If the requested resource is in the cache, return it
+          console.log("masuk cache");
+          return response;
+        }
+  
+        // If the requested resource is not in the cache, fetch it from the network
+        return fetch(event.request).then(response2 => {
+          // Cache the fetched resource for future use
+          caches.open('first-app').then(cache => {
+            console.log("masuk network");
+            const response2Clone = response2.clone()
+            cache.put(event.request, response2Clone);
+          });
+  
+          // Return the fetched resource to the client
+          return response2;
+        });
+      })
+    );
+  });
+  
