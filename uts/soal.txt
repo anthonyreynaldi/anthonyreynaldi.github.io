@@ -1,0 +1,9 @@
+Buka website: https://getmdl.io/templates/index.html dan pilih yang bernama "PORTFOLIO", bisa download web lengkapnya pada link disana, https://code.getmdl.io/1.3.0/mdl-template-portfolio.zip
+
+Jadikan web tersebut agar bisa menjadi sebuah Progressive Web Apps dengan strategi: cache first then network. Lihat seluruh file yang ada dan tentukan mana saja yang harus di-cache.
+
+Setelah menjadi sebuah PWA yang terinstall, pastikan app bisa dibuka meski sedang offline.
+
+Perhatikan syarat-syarat agar bisa terinstall seperti ada app icon berbagai ukuran. Icon bebas memilih gambar apa saja.
+
+Tuliskan alamat website Anda yang berisi aplikasi tersebut, boleh menggunakan GitHub Pages atau lainnya.
